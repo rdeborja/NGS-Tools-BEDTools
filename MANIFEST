@@ -1,0 +1,12 @@
+Build.PL
+Changes
+lib/NGS/Tools/BEDTools.pm
+lib/NGS/Tools/BEDTools/CoverageBed.pm
+lib/NGS/Tools/BEDTools/IntersectBed.pm
+MANIFEST			This list of files
+README
+t/01-intersect.t
+t/02-coveragebed.t
+Makefile.PL
+META.yml
+META.json

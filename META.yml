@@ -1,0 +1,32 @@
+---
+abstract: 'DO NOT USE THIS DIRECTLY.  USE THE PROVIDED ROLES INSTEAD!!!'
+author:
+  - 'Richard de Borja <richard.deborja@sickkids.ca>'
+build_requires:
+  Test::More: 0
+configure_requires:
+  Module::Build: 0
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4205, CPAN::Meta::Converter version 2.120921'
+license: artistic_2
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: NGS-Tools-BEDTools
+provides:
+  NGS::Tools::BEDTools:
+    file: lib/NGS/Tools/BEDTools.pm
+    version: 0.01
+  NGS::Tools::BEDTools::CoverageBed:
+    file: lib/NGS/Tools/BEDTools/CoverageBed.pm
+    version: 0
+  NGS::Tools::BEDTools::IntersectBed:
+    file: lib/NGS/Tools/BEDTools/IntersectBed.pm
+    version: 0
+requires:
+  File::Basename: 0
+  Moose::Role: 0
+  MooseX::Params::Validate: 0
+resources:
+  license: http://www.perlfoundation.org/artistic_license_2_0
+version: 0.01

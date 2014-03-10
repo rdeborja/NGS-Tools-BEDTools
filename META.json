@@ -1,0 +1,54 @@
+{
+   "abstract" : "DO NOT USE THIS DIRECTLY.  USE THE PROVIDED ROLES INSTEAD!!!",
+   "author" : [
+      "Richard de Borja <richard.deborja@sickkids.ca>"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "Module::Build version 0.4205",
+   "license" : [
+      "artistic_2"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "NGS-Tools-BEDTools",
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Test::More" : "0"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "File::Basename" : "0",
+            "Moose::Role" : "0",
+            "MooseX::Params::Validate" : "0"
+         }
+      }
+   },
+   "provides" : {
+      "NGS::Tools::BEDTools" : {
+         "file" : "lib/NGS/Tools/BEDTools.pm",
+         "version" : "0.01"
+      },
+      "NGS::Tools::BEDTools::CoverageBed" : {
+         "file" : "lib/NGS/Tools/BEDTools/CoverageBed.pm"
+      },
+      "NGS::Tools::BEDTools::IntersectBed" : {
+         "file" : "lib/NGS/Tools/BEDTools/IntersectBed.pm"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "license" : [
+         "http://www.perlfoundation.org/artistic_license_2_0"
+      ]
+   },
+   "version" : "0.01"
+}
