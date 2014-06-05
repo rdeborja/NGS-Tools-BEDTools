@@ -53,11 +53,6 @@ sub intersect_bed {
 			isa			=> 'Str',
 			required	=> 1
 			},
-		bam => {
-			isa			=> 'Int',
-			required	=> 0,
-			default		=> 0
-			},
 		additional_parameters => {
 			isa			=> 'ArrayRef',
 			required	=> 0,
@@ -71,6 +66,10 @@ sub intersect_bed {
 		);
 
 	my $program = $args{'program'};
+	my $params = join(' ',
+		'-abam', $args{'bam'}
+
+		);
 
 	my %return_values = (
 

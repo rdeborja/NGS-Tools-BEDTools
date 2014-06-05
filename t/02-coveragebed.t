@@ -1,4 +1,4 @@
-use Test::More tests => 1;
+use Test::More tests => 2;
 use Test::Moose;
 use Test::Exception;
 use MooseX::ClassCompositor;
@@ -30,8 +30,13 @@ my $coverage_run = $coverage->coverage_bed(
 	bam => $bam,
 	bed => $bed
 	);
-print Dumper($coverage_run);
 
-SKIP: {
+my $expected_cmd = join(' ',
+	'coverageBed',
+	'-abam test.bam',
+	'-b target.bed',
+	'-hist -d',
+	'> test.coverage.txt'
+	);
 
-	}
+is($coverage_run->{'cmd'}, $expected_cmd, 'Command matches expected');
