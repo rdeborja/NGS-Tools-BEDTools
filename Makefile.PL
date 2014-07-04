@@ -2,16 +2,16 @@
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-  'PL_FILES' => {},
-  'INSTALLDIRS' => 'site',
   'NAME' => 'NGS::Tools::BEDTools',
-  'EXE_FILES' => [],
   'VERSION_FROM' => 'lib/NGS/Tools/BEDTools.pm',
   'PREREQ_PM' => {
-                   'Test::More' => 0,
+                   'File::Basename' => 0,
                    'Moose::Role' => 0,
                    'MooseX::Params::Validate' => 0,
-                   'File::Basename' => 0
-                 }
+                   'Test::More' => 0
+                 },
+  'INSTALLDIRS' => 'site',
+  'EXE_FILES' => [],
+  'PL_FILES' => {}
 )
 ;

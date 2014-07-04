@@ -1,5 +1,5 @@
 {
-   "abstract" : "DO NOT USE THIS DIRECTLY.  USE THE PROVIDED ROLES INSTEAD!!!",
+   "abstract" : "Package for the BEDTools suite of tools",
    "author" : [
       "Richard de Borja <richard.deborja@sickkids.ca>"
    ],
@@ -35,13 +35,16 @@
    "provides" : {
       "NGS::Tools::BEDTools" : {
          "file" : "lib/NGS/Tools/BEDTools.pm",
-         "version" : "0.01"
+         "version" : "0.02"
       },
       "NGS::Tools::BEDTools::CoverageBed" : {
          "file" : "lib/NGS/Tools/BEDTools/CoverageBed.pm"
       },
       "NGS::Tools::BEDTools::IntersectBed" : {
          "file" : "lib/NGS/Tools/BEDTools/IntersectBed.pm"
+      },
+      "NGS::Tools::BEDTools::PairToPair" : {
+         "file" : "lib/NGS/Tools/BEDTools/PairToPair.pm"
       }
    },
    "release_status" : "stable",
@@ -50,5 +53,5 @@
          "http://www.perlfoundation.org/artistic_license_2_0"
       ]
    },
-   "version" : "0.01"
+   "version" : "0.02"
 }

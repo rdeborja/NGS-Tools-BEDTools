@@ -3,10 +3,12 @@ Changes
 lib/NGS/Tools/BEDTools.pm
 lib/NGS/Tools/BEDTools/CoverageBed.pm
 lib/NGS/Tools/BEDTools/IntersectBed.pm
+lib/NGS/Tools/BEDTools/PairToPair.pm
+Makefile.PL
 MANIFEST			This list of files
+META.json
+META.yml
 README
 t/01-intersect.t
 t/02-coveragebed.t
-Makefile.PL
-META.yml
-META.json
+t/03-pairtopair.t

@@ -7,6 +7,7 @@ my $builder = Module::Build->new(
     module_name         => 'NGS::Tools::BEDTools',
     license             => 'Artistic_2_0',
     dist_author         => q{Richard de Borja <richard.deborja@sickkids.ca>},
+    dist_abstract       => 'Package for the BEDTools suite of tools',
     dist_version_from   => 'lib/NGS/Tools/BEDTools.pm',
     release_status      => 'stable',
     configure_requires => {
