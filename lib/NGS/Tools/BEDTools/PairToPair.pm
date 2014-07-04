@@ -125,7 +125,7 @@ sub pair_to_pair {
             );
         }
     elsif ($args{'require_different_names'} eq 'false') {
-        # do nothing, this is really a hack of a place holder
+        # do nothing, this is really a hack for a place holder
         }
     else {
         die "Invalid option for \'require_different_names\'";
