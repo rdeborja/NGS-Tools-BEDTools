@@ -1,9 +1,11 @@
+bin/get_bedtools_coverage.pl
 Build.PL
 Changes
 lib/NGS/Tools/BEDTools.pm
-lib/NGS/Tools/BEDTools/CoverageBed.pm
-lib/NGS/Tools/BEDTools/IntersectBed.pm
-lib/NGS/Tools/BEDTools/PairToPair.pm
+lib/NGS/Tools/BEDTools/Roles/CoverageBed.pm
+lib/NGS/Tools/BEDTools/Roles/IntersectBed.pm
+lib/NGS/Tools/BEDTools/Roles/PairToPair.pm
+lib/NGS/Tools/BEDTools/Roles/SubtractBed.pm
 Makefile.PL
 MANIFEST			This list of files
 META.json
@@ -12,3 +14,4 @@ README
 t/01-intersect.t
 t/02-coveragebed.t
 t/03-pairtopair.t
+t/04-subtract_bed.t

@@ -1,10 +1,8 @@
 package NGS::Tools::BEDTools;
 use Moose;
 
-with 'NGS::Tools::BEDTools::CoverageBed';
-with 'NGS::Tools::BEDTools::IntersectBed';
-with 'NGS::Tools::BEDTools::PairToPair';
-with 'HPF::Role::SGE';
+with 'NGS::Tools::BEDTools::Roles::CoverageBed';
+with 'NGS::Tools::BEDTools::Roles::PairToPair';
 
 use 5.006;
 use strict;
@@ -16,11 +14,11 @@ NGS::Tools::BEDTools - DO NOT USE THIS DIRECTLY.  USE THE PROVIDED ROLES INSTEAD
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 AUTHOR
 

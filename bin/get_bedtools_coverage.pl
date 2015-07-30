@@ -1,11 +1,12 @@
 #!/usr/bin/env perl
 
-### get_bedtools_coverage.pl ##############################################################################
+### get_bedtools_coverage.pl ######################################################################
 # Generate a file containing BEDTools coverageBed output.
 
 ### HISTORY #######################################################################################
 # Version       Date            Developer           Comments
 # 0.01          2014-07-09      rdeborja            initial development
+# 0.02          2015-07-30      rdeborja            updated POD, added PBS submission
 
 ### INCLUDES ######################################################################################
 use warnings;
@@ -14,13 +15,17 @@ use Carp;
 use Getopt::Long;
 use Pod::Usage;
 use NGS::Tools::BEDTools;
+use HPF::PBS;
+use File::ShareDir ':ALL';
 
 ### COMMAND LINE DEFAULT ARGUMENTS ################################################################
 # list of arguments and default values go here as hash key/value pairs
 our %opts = (
 	bam => undef,
 	bed => undef,
-	program => '/hpf/tools/centos/BEDTools/2.16.2/bin/coverageBed'
+	program => '/hpf/tools/centos6/BEDTools/2.16.2/bin/coverageBed',
+    submit_to_cluster => 'true',
+    memory => 24
     );
 
 ### MAIN CALLER ###################################################################################
@@ -45,7 +50,9 @@ sub main {
         "man",
         "bam|b=s",
         "bed=s",
-        "program=s"
+        "program=s",
+        "submit_to_cluster:s",
+        "memory:i"
         ) or pod2usage(64);
     
     pod2usage(1) if $opts{'help'};
@@ -58,13 +65,27 @@ sub main {
             }
         }
 
-    my $bedtools = NGS::Tools::BEDTools->new()
+    my $bedtools = NGS::Tools::BEDTools->new();
     my $coverage_bed = $bedtools->coverage_bed(
     	bam => $opts{'bam'},
     	bed => $opts{'bed'},
     	program => $opts{'program'}
     	);
 
+    my $pbs = HPF::PBS->new();
+    my $template_dir = join('/',
+        dist_dir('HPF'),
+        'templates'
+        );
+    my $template = 'submit_to_pbs.template';
+    my $coverage_bed_run = $pbs->create_cluster_shell_script(
+        command => $coverage_bed->{'cmd'},
+        jobname => 'coverage_bed',
+        template_dir => $template_dir,
+        template => $template,
+        submit => $opts{'submit_to_cluster'},
+        memory => $opts{'memory'}
+        );
     return 0;
     }
 
@@ -81,11 +102,13 @@ get_bedtools_coverage.pl
 B<get_bedtools_coverage.pl> [options] [file ...]
 
     Options:
-    --help          brief help message
-    --man           full documentation
-    --bam           BAM file to process
-    --bed           BED file identifying the regions to calculate coverage
-    --program       full path to BEDTools' coverageBed
+    --help              brief help message
+    --man               full documentation
+    --bam               BAM file to process
+    --bed               BED file identifying the regions to calculate coverage
+    --program           full path to BEDTools' coverageBed
+    --submit_to_cluster submit to cluster, default: true
+    --memory            memory to allocate to job, default: 24
 
 =head1 OPTIONS
 
@@ -111,6 +134,14 @@ Name of BED file to process.
 
 Full path to the coverageBED BEDTools program.
 
+=item B<--submit_to_cluster>
+
+A true/false flag to determine whether to submit the job to the cluster (default: true).
+
+=item B<--memory>
+
+Amount of memory (in GB) to allocate for the job (default: 24).
+
 =back
 
 =head1 DESCRIPTION
@@ -123,11 +154,11 @@ get_bedtools_coverage.pl --bam test.bam --bed target.bed --program /usr/local/bi
 
 =head1 AUTHOR
 
-Richard de Borja -- Molecular Genetics
+Richard de Borja -- The Hospital for Sick Children
 
-The Hospital for Sick Children
+=head1 ACKNOWLEDGEMENTS
 
-=head1 SEE ALSO
+Dr. Adam Shlien, PI -- The Hospital for Sick Children
 
 =cut
 
